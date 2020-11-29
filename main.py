@@ -3,14 +3,13 @@ import requests
 
 app = Flask(__name__)
 
-@app.route(/)
+@app.route("/")
 def top():
     return "郵便番号(半角数字7桁)をもとに住所を検索します。" \
            "ハイフンなしで入力してください。"
-    # 郵便番号を取得
     zcode = str(input())
 
-@approute("/address_search?zipcode=<zcode>")
+@app.route("/address_search?zipcode=<zcode>")
 def getzcode():
     # 郵便番号をもとに情報を取得
     url = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=" + zcode
